@@ -29,3 +29,7 @@ Example
     slideshow.setImages(images) // We specify the image that we want to show
     slideshow.start()           // And now the images begin sliding at the top left
 ```
+
+License
+-------
+Apache license
