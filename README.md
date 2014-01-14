@@ -13,11 +13,15 @@ A Go library that allows you to place in your Graphical Application a custom car
 * Position of the carousel.
 * Width and height of the carousel.
 
-Installation
+Installation on Linux
 ============
 ```
-go get github.com/martin-angelov1992/GoCarousel
+$ sudo add-apt-repository ppa:ubuntu-sdk-team/ppa
+$ sudo apt-get update
+$ sudo apt-get install ubuntu-sdk qtbase5-private-dev qtdeclarative5-private-dev
+$ go get github.com/martin-angelov1992/GoCarousel
 ```
+For other operating systems if you manage to install [qml](https://github.com/niemeyer/qml) you should be able to use the library.
 
 Example
 =======
