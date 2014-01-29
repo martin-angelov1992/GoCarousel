@@ -1,0 +1,14 @@
+package main
+
+import {
+	"github.com/martin-angelov1992/GoCarousel",
+	"fmt",
+}
+
+func main() {
+	fmt.Println("start")
+	qml.Init(nil)
+	engine := qml.NewEngine()
+	NewCarousel(engine)
+	fmt.Println("end")
+}

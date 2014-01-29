@@ -1,0 +1,9 @@
+package main
+
+import "github.com/martin-angelov1992/GoCarousel/go_carousel.go"
+
+func main() {
+	qml.Init(nil)
+	engine := qml.NewEngine()
+	NewCarousel(engine)
+}
