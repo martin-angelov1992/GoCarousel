@@ -4,11 +4,14 @@ import "carousel.js" as Script
 Rectangle {
 	id: rect
 	color: "green"
+	clip: true
 	Image {
 		id: image1
 	}
 	Image {
 		id: image2
+		clip: true
+		fillMode: Image.PreserveAspectCrop
 	}
 	Timer {
 		id: timer
@@ -26,7 +29,6 @@ Rectangle {
                  PropertyChanges {
                      target: image2
                      x: 0
-			width: rect.width
                  }
              }
          ]
@@ -43,9 +45,6 @@ Rectangle {
 		image1.x = 0;
 		image2.source = Script.images[(Script.curIndex+1)%Script.images.length];
 		image2.x = image1.width;
-		image2.width = 0;
-		image1.width = width;
-		image1.height = height;
 		rect.state = "";
 		rect.state = "move";
 		Script.curIndex = (Script.curIndex+1)%Script.images.length;
@@ -62,8 +61,6 @@ Rectangle {
 		rect.width = width;
 		rect.height = height;
 		image2.x = image1.width;
-		image2.width = 0;
-		image2.height = height;
 	}
 	function dumpVars(object) {
 	   console.log("dump:" + object)

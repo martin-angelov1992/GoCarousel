@@ -63,16 +63,12 @@ func (c *Carousel) SetEngine(engine *qml.Engine) {
 }
 
 func GetImage(path string) image.Image {
-	allowedFormats := []string{"gif", "jpeg", "png"}
 	re, _ := regexp.Compile(`^(\w:)?[-\\/._ A-Za-z0-9]+$`)
 	if re.MatchString(path) == false {
 		panic("invalid file name: "+path)
 	}
 	parts := strings.Split(path, ".")
 	format := parts[len(parts)-1]
-	if arraySearch(format, allowedFormats) == -1 {
-		panic("not allowed format: "+format+" of file: "+path)
-	}
 	f, err := os.Open(path)
 	if err != nil {
 		panic(err)
@@ -83,13 +79,18 @@ func GetImage(path string) image.Image {
 		case "gif":
 			image, err = gif.Decode(f)
 		case "jpeg":
+		case "jpg":
 			image, err = jpeg.Decode(f)
 		case "png":
 			image, err = png.Decode(f)
+		default:
+			panic("not allowed format: "+format+" of file: "+path)
 	}
 	if err != nil {
 		panic(err)
 	}
+	//if image.Rectangle().Max.Y != c.width {
+	//}
 	return image
 }
 

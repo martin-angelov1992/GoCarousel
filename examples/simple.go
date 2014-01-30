@@ -17,7 +17,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	carousel.SetImages([]string{"ubuntu-gopher.png", "firefox.png"})
+	carousel.SetImages([]string{"/pics/ubuntu-gopher.png", "/pics/firefox.png", "/pics/fire.jpg"})
 	win.Show()
 	win.Wait()
 	fmt.Println("end")
