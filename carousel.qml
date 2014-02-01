@@ -3,15 +3,20 @@ import "carousel.js" as Script
 
 Rectangle {
 	id: rect
-	color: "green"
 	clip: true
-	Image {
-		id: image1
-	}
-	Image {
-		id: image2
+	Rectangle {
+		id: rect1
+		Image {
+			id: image1
+		}
 		clip: true
-		fillMode: Image.PreserveAspectCrop
+	}
+	Rectangle {
+		id: rect2
+		Image {
+			id: image2
+		}
+		clip: true
 	}
 	Timer {
 		id: timer
@@ -24,10 +29,10 @@ Rectangle {
 
                  PropertyChanges {
                      target: image1
-                     x: -image1.width
+                     x: -rect1.width
                  }
                  PropertyChanges {
-                     target: image2
+                     target: rect2
                      x: 0
                  }
              }
@@ -42,9 +47,9 @@ Rectangle {
 	    }
 	function changeImage() {
 		image1.source = Script.images[Script.curIndex];
-		image1.x = 0;
+		rect1.x = 0;
 		image2.source = Script.images[(Script.curIndex+1)%Script.images.length];
-		image2.x = image1.width;
+		rect2.x = rect1.width;
 		rect.state = "";
 		rect.state = "move";
 		Script.curIndex = (Script.curIndex+1)%Script.images.length;
@@ -58,18 +63,9 @@ Rectangle {
 			width = image1.width;
 			height = image1.height
 		}
-		rect.width = width;
-		rect.height = height;
-		image2.x = image1.width;
-	}
-	function dumpVars(object) {
-	   console.log("dump:" + object)
-	   var vars = new Array();
-	   for (var member in object)
-		   vars.push(member);
-	   vars = vars.sort();
-	   for(var i=0,len=vars.length; i<len; i++)
-	       console.log("   " + vars[i] + " " + object[vars[i]]);
+		rect.width = rect1.width = rect2.width = width;
+		rect.height = rect1.height = rect2.height = height;
+		rect2.x = rect1.width;
 	}
 	Component.onCompleted: init()
 }

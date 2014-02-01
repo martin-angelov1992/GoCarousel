@@ -12,13 +12,10 @@ func main() {
 	engine := qml.NewEngine()
 	base, _ := engine.LoadFile("base.qml")
 	win := base.CreateWindow(nil)
-	err, carousel := GoCarousel.NewCarousel(engine, win)
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	carousel.SetImages([]string{"/pics/ubuntu-gopher.png", "/pics/firefox.png", "fire.jpg"})
+	carousel := GoCarousel.NewCarousel(engine, win)
+	carousel.SetImages([]string{"/pics/ubuntu-gopher.png", "/pics/firefox.png", "/pics/fire.jpg"})
 	win.Show()
+	carousel.Run()
 	win.Wait()
 	fmt.Println("end")
 }
