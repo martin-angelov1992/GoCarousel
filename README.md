@@ -36,12 +36,12 @@ import (
 func main() {
 	qml.Init(nil)
 	engine := qml.NewEngine()
-	base, _ := engine.LoadFile("base.qml")
+	base, _ := engine.LoadFile("base.qml") // Where base.qml is an example qml file to add carousel to
 	win := base.CreateWindow(nil)
 	carousel := GoCarousel.NewCarousel(engine, win)
 	carousel.SetImages([]string{"../test_images/ubuntu-gopher.png", "../test_images/firefox.png", "../test_images/fire.jpg"})
 	carousel.SetWidth(200)
-	carousel.SetHeight(GoCarousel.CALCULATE_DIMENSION)
+	carousel.SetHeight(GoCarousel.CALCULATE_DIMENSION) // Height will be calculated to keep aspect ratio
 	win.Show()
 	carousel.Run()
 	win.Wait()
