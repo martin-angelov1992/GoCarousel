@@ -26,12 +26,26 @@ For other operating systems if you manage to install [qml](https://github.com/ni
 Example
 =======
 ```
-    images := []string{"slide1.jpg", "slide2.jpg", "slide3.jpg"}
-    slideshow := new(Slideshow)
-    slideshow.setPosition(0, 0) // We want the slideshow to be at the top left of our graphic application
-    slideshow.setSize(100)      // Pictures will show with height 100 and width auto
-    slideshow.setImages(images) // We specify the image that we want to show
-    slideshow.start()           // And now the images begin sliding at the top left
+ package main
+ 
+ import (
+ 	"github.com/niemeyer/qml"
+ 	"github.com/martin-angelov1992/GoCarousel"
+ )
+ 
+ func main() {
+ 	qml.Init(nil)
+ 	engine := qml.NewEngine()
+ 	base, _ := engine.LoadFile("base.qml")
+ 	win := base.CreateWindow(nil)
+ 	carousel := GoCarousel.NewCarousel(engine, win)
+ 	carousel.SetImages([]string{"../test_images/ubuntu-gopher.png", "../test_images/firefox.png", "../test_images/fire.jpg"})
+ 	carousel.SetWidth(200)
+ 	carousel.SetHeight(GoCarousel.CALCULATE_DIMENSION)
+ 	win.Show()
+ 	carousel.Run()
+ 	win.Wait()
+ }
 ```
 
 License
