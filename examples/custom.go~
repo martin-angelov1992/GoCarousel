@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/niemeyer/qml"
 	"github.com/martin-angelov1992/GoCarousel"
 )
 
@@ -14,8 +15,8 @@ func main() {
 	carousel.SetAnimationFile("slide_up")
 	carousel.SetInterval(2000)
 	carousel.SetRotateRandomly(true)
-	carousel.SetPosX(100)
-	carousel.SetPosY(50)
+	carousel.SetX(100)
+	carousel.SetY(50)
 	carousel.SetSpeed(300)
 	carousel.SetWidth(300)
 	carousel.SetHeight(200)

@@ -51,8 +51,22 @@ Rectangle {
 			duration: speed
 		}
 	    }
+	function clearImageCache() {
+		for (var i in Script.images) {
+			Script.images[i] = Script.images[i].replace(/\d\.\d+$/, "")+Math.random();
+		}
+		image1.source = "image://provide/"+Script.images[Script.curIndex];
+		image2.source = "image://provide/"+Script.images[(Script.curIndex+1)%Script.images.length];
+		rect
+	}
+	function updVars() {
+		rect.width = myWidth
+		rect.height = myHeight
+		var arrImages = images.split("|");
+		Script.images = arrImages;
+	}
 	function changeImage() {
-		image1.source = Script.images[Script.curIndex];
+		image1.source = "image://provide/"+Script.images[Script.curIndex];
 		rect1.y = 0;
 		if(rotateRandomly && Script.images.length > 1) {
 			var nextIndex = Math.floor(Math.random()*(Script.images.length-1));
@@ -63,7 +77,7 @@ Rectangle {
 		} else {
 			Script.curIndex = (Script.curIndex+1)%Script.images.length;
 		}
-		image2.source = Script.images[Script.curIndex];
+		image2.source = "image://provide/"+Script.images[Script.curIndex];
 		rect2.y = rect1.height*vars.multiplierY;
 		rect2.x = rect1.width*vars.multiplierX;
 		rect.state = "";
@@ -81,8 +95,8 @@ Rectangle {
 				nextIndex = Script.images[Script.images.length-1];
 			}
 		}
-		image1.source = arrImages[0];
-		image2.source = arrImages[1%Script.images.length];
+		image1.source = "image://provide/"+arrImages[Script.curIndex];
+		image2.source = "image://provide/"+arrImages[(Script.curIndex+1)%Script.images.length];
 		width = myWidth;
 		height = myHeight;
 		if(!width || !height) {

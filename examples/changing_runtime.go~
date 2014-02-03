@@ -17,7 +17,7 @@ func main() {
 		time.Sleep(3*time.Second)
 		carousel.SetAnimationFile("slide_up")
 		carousel.SetInterval(3000)
-		carousel.AddImage("../test_images/fire.jpg")
+	carousel.SetImages([]string{"../test_images/ubuntu-gopher.png", "../test_images/firefox.png", "../test_images/fire.jpg"})
 		carousel.SetPosX(100)
 		carousel.SetPosY(50)
 		carousel.SetSpeed(700)
